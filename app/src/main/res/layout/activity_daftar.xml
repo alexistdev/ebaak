@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_utama"
+    tools:context=".desain.Daftar">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/logo_ebaak"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/darmajaya"
+        android:layout_marginTop="30dp"/>
+    <TextView
+        android:id="@+id/judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+
+    <LinearLayout
+        android:layout_below="@+id/judul"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:orientation="vertical"
+        android:elevation="10dp"
+        android:background="@drawable/bg_login">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/daftar2"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:id="@+id/txt_Jurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="@string/daftar5"
+            android:hint="@string/daftar5"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="18sp"
+            android:text="@string/daftar5" />
+        <Spinner
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/spinnerJurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txt_npm"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="@string/daftar4"
+            android:hint="@string/daftar4"/>
+
+        <EditText
+            android:id="@+id/txt_namalengkap"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:autofillHints="@string/daftar3"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/daftar3"/>
+
+        <EditText
+            android:id="@+id/txt_email"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:autofillHints="@string/daftar1"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/daftar1"/>
+
+        <EditText
+            android:id="@+id/txt_password"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="@string/daftar6"
+            android:hint="@string/daftar6"/>
+        <ImageView
+            android:id="@+id/btn_daftar"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:contentDescription="@string/daftar7"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/tombol_daftar"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

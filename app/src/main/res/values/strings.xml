@@ -5,4 +5,12 @@
     <string name="splash1">E-BaaK</string>
     <string name="splash2">Gambar Background Splash</string>
     <string name="splash3">Gambar Tombol Mulai</string>
+    <!--  Halaman Daftar  -->
+    <string name="daftar1">Email</string>
+    <string name="daftar2">DAFTAR</string>
+    <string name="daftar3">Nama Lengkap</string>
+    <string name="daftar4">NPM</string>
+    <string name="daftar5">Jurusan</string>
+    <string name="daftar6">Password</string>
+    <string name="daftar7">Tombol Daftar</string>
 </resources>
