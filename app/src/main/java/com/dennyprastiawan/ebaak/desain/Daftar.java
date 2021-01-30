@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.dennyprastiawan.ebaak.API.APIService;
 import com.dennyprastiawan.ebaak.R;
@@ -29,6 +30,7 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class Daftar extends AppCompatActivity {
     private EditText tvNpm,tvNama,tvEmail,tvPassword,tvJurusan;
+    private TextView btnLogin;
     private ProgressDialog pDialog;
     private ImageView btnDaftar;
     private Spinner mSpinJurusan;
@@ -53,6 +55,11 @@ public class Daftar extends AppCompatActivity {
             }
         });
         btnDaftar.setOnClickListener(v -> simpanData());
+        btnLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(Daftar.this, Login.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     /* Ini adalah private method untuk menyimpan data ke dalam database melalui Rest API*/
@@ -151,6 +158,7 @@ public class Daftar extends AppCompatActivity {
     public void init()
     {
         mSpinJurusan =  findViewById(R.id.spinnerJurusan);
+        btnLogin = findViewById(R.id.tombol_login);
         tvNpm = findViewById(R.id.txt_npm);
         tvNama = findViewById(R.id.txt_namalengkap);
         tvPassword = findViewById(R.id.txt_password);

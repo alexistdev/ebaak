@@ -13,20 +13,22 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/darmajaya"
+        android:contentDescription="@string/logo_ebaak"
         android:layout_marginTop="50dp"/>
 
     <LinearLayout
+        android:id="@+id/form_login"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         android:background="@drawable/bg_login">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DAFTAR"
+            android:text="@string/login1"
             android:textStyle="bold"
             android:textSize="24sp"
             android:gravity="center_horizontal"
@@ -38,8 +40,38 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="Email"/>
+            android:inputType="text"
+            android:autofillHints="@string/login2"
+            android:hint="@string/login2"/>
+        <EditText
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="textPassword"
+            android:autofillHints="@string/login3"
+            android:hint="@string/login3"/>
 
+        <ImageView
+            android:id="@+id/tombol_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/tombol_login"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/login4"/>
     </LinearLayout>
+    <TextView
+        android:id="@+id/btn_daftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login5"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/form_login"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

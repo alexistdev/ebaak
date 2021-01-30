@@ -28,6 +28,7 @@
         android:textColor="@color/white"/>
 
     <LinearLayout
+        android:id="@+id/form"
         android:layout_below="@+id/judul"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
@@ -123,5 +124,16 @@
             android:src="@drawable/tombol_daftar"/>
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/tombol_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/daftar8"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/form"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
