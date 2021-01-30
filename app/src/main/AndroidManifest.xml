@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Ebaak">
         <activity android:name=".desain.Daftar"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"/>
         <activity
             android:name=".desain.Login"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />

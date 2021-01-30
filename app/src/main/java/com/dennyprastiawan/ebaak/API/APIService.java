@@ -3,6 +3,7 @@ package com.dennyprastiawan.ebaak.API;
 import android.content.Context;
 
 import com.dennyprastiawan.ebaak.config.Constants;
+import com.dennyprastiawan.ebaak.model.LoginModel;
 import com.dennyprastiawan.ebaak.model.MahasiswaModel;
 import com.dennyprastiawan.ebaak.response.ResponseJurusan;
 
@@ -18,6 +19,12 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface APIService {
+
+    @FormUrlEncoded
+    @POST("api/Auth/login")
+    Call<LoginModel> postLogin(@Field("npm") String npm,
+                               @Field("password") String password);
+
     //API untuk menampilkan jurusan di spinner
     @GET("api/Daftar/tampil")
     Call<ResponseJurusan> spinnerJurusan();

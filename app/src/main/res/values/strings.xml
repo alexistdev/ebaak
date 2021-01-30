@@ -46,6 +46,10 @@
     <string name="login3">Password</string>
     <string name="login4">Tombol Login</string>
     <string name="login5">Belum punya akun? Daftar</string>
+    <!--  Halaman Home  -->
+    <string name="home1">Gambar Icon</string>
+    <!--  Halaman Akun  -->
+    <string name="akun1">Setting</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

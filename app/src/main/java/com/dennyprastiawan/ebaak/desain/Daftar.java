@@ -14,12 +14,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.dennyprastiawan.ebaak.API.APIService;
+import com.dennyprastiawan.ebaak.MainActivity;
 import com.dennyprastiawan.ebaak.R;
 import com.dennyprastiawan.ebaak.model.APIError;
 import com.dennyprastiawan.ebaak.model.MahasiswaModel;
 import com.dennyprastiawan.ebaak.model.SemuaJurusanItem;
 import com.dennyprastiawan.ebaak.response.ResponseJurusan;
 import com.dennyprastiawan.ebaak.utils.ErrorUtils;
+import com.dennyprastiawan.ebaak.utils.SessionUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -41,6 +44,11 @@ public class Daftar extends AppCompatActivity {
         setContentView(R.layout.activity_daftar);
 
         init();
+        if(SessionUtils.isLoggedIn(this)){
+            Intent intent = new Intent(Daftar.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
         populateSpinner(getApplicationContext());
         mSpinJurusan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -64,6 +72,7 @@ public class Daftar extends AppCompatActivity {
 
     /* Ini adalah private method untuk menyimpan data ke dalam database melalui Rest API*/
     private void simpanData(){
+        showDialog();
         String jurusan = tvJurusan.getText().toString();
         String npm = tvNpm.getText().toString();
         String nama = tvNama.getText().toString();
@@ -100,6 +109,7 @@ public class Daftar extends AppCompatActivity {
                         }
                     });
                 } catch(Exception e){
+                    hideDialog();
                     e.printStackTrace();
                     displayExceptionMessage(e.getMessage());
                 }

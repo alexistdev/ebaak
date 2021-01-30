@@ -7,13 +7,14 @@ import com.dennyprastiawan.ebaak.config.Constants;
 import com.google.gson.Gson;
 
 public class SessionUtils {
-    public static boolean login(Context context, String IdUser, String level){
+    public static boolean login(Context context, String IdUser, String token){
         SharedPreferences sharedPreferences = context.getSharedPreferences(
                 Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String userJson = new Gson().toJson(IdUser);
         editor.putString(Constants.USER_SESSION, userJson);
         editor.putString("idUser", IdUser);
+        editor.putString("token", token);
         editor.apply();
         return true;
     }
