@@ -48,6 +48,9 @@
     <string name="login5">Belum punya akun? Daftar</string>
     <!--  Halaman Home  -->
     <string name="home1">Gambar Icon</string>
+
+    <!--  Surat Keterangan  -->
+    <string name="str1"><ul> <li><i>first</i> item</li> <li>item 2</li> </ul></string>
     <!--  Halaman Akun  -->
     <string name="akun1">Setting</string>
     <!-- TODO: Remove or change this placeholder text -->

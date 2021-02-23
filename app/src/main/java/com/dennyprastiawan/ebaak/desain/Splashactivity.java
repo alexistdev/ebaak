@@ -10,21 +10,31 @@ import com.dennyprastiawan.ebaak.MainActivity;
 import com.dennyprastiawan.ebaak.R;
 import com.dennyprastiawan.ebaak.utils.SessionUtils;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Splashactivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashactivity);
-        ImageView btnMulai = findViewById(R.id.btn_mulai);
+
         if(SessionUtils.isLoggedIn(this)){
             Intent intent = new Intent(Splashactivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
-        btnMulai.setOnClickListener(v -> {
-            Intent intent = new Intent(Splashactivity.this, Daftar.class);
-            startActivity(intent);
-            finish();
-        });
+        int timeout = 3000; // make the activity visible for 4 seconds
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                finish();
+                Intent homepage = new Intent(Splashactivity.this, Login.class);
+                startActivity(homepage);
+            }
+        }, timeout);
     }
 }

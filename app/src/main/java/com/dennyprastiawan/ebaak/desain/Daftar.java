@@ -144,7 +144,6 @@ public class Daftar extends AppCompatActivity {
                     List<SemuaJurusanItem> semuaJurusanItems = response.body().getSemuaJurusanItems();
                     List<String> listSpinner = new ArrayList<>();
                     for (int i = 0; i < semuaJurusanItems.size(); i++){
-
                         listSpinner.add(semuaJurusanItems.get(i).getNama_jurusan());
                     }
 

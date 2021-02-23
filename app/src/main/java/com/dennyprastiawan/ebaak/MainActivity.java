@@ -5,6 +5,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.dennyprastiawan.ebaak.fragment.akun_fragment;
 import com.dennyprastiawan.ebaak.fragment.bantuan_fragment;
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         loadFragment(new home());
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomMenu);
@@ -52,5 +56,22 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+
+//    private void showDialog(){
+//        if(!pDialog.isShowing()){
+//            pDialog.show();
+//        }
+//    }
+//
+//    private void hideDialog(){
+//        if(pDialog.isShowing()){
+//            pDialog.dismiss();
+//        }
+//    }
+
+    public void displayExceptionMessage(String msg)
+    {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
 
 }
