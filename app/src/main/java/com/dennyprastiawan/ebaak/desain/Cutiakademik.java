@@ -1,25 +1,24 @@
 package com.dennyprastiawan.ebaak.desain;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.dennyprastiawan.ebaak.R;
 
-public class Suratketerangan extends AppCompatActivity {
+public class Cutiakademik extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_suratketerangan);
-        Suratketerangan.this.setTitle("Surat Keterangan");
+        setContentView(R.layout.activity_cutiakademik);
+        Cutiakademik.this.setTitle("Cuti Akademik");
         tampil_syarat();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -38,13 +37,11 @@ public class Suratketerangan extends AppCompatActivity {
     public void tampil_syarat()
     {
         final AlertDialog.Builder alert = new AlertDialog.Builder(
-                Suratketerangan.this);
+                Cutiakademik.this);
         alert.setTitle("Syarat :");
         String[] items={
-                "1. Melampirkan Fotocopy KRS (Semester Berjalan).",
-                "2. Melampirkan Fotocopy DNS (Semester Terakhir/Semester Aktif).",
-                "3. Melampirkan Fotocopy Slip BPP (Semester Berjalan).",
-                "4. File dijadikan satu dalam folder zip/rar."
+                "1. Membayar Biaya Cuti AKademik.",
+                "2. Aktif Semester Sebelumnya."
         };
         alert.setItems(items, (dialogInterface, i) -> {});
         alert.setCancelable(false)

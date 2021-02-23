@@ -1,25 +1,24 @@
 package com.dennyprastiawan.ebaak.desain;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.dennyprastiawan.ebaak.R;
 
-public class Suratketerangan extends AppCompatActivity {
+public class SuratSidang extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_suratketerangan);
-        Suratketerangan.this.setTitle("Surat Keterangan");
-        tampil_syarat();
+        setContentView(R.layout.activity_surat_sidang);
+        SuratSidang.this.setTitle("Surat Pendaftaran Sidang");
+        //tampil_syarat();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -38,7 +37,7 @@ public class Suratketerangan extends AppCompatActivity {
     public void tampil_syarat()
     {
         final AlertDialog.Builder alert = new AlertDialog.Builder(
-                Suratketerangan.this);
+                SuratSidang.this);
         alert.setTitle("Syarat :");
         String[] items={
                 "1. Melampirkan Fotocopy KRS (Semester Berjalan).",

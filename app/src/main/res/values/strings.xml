@@ -50,7 +50,39 @@
     <string name="home1">Gambar Icon</string>
 
     <!--  Surat Keterangan  -->
-    <string name="str1"><ul> <li><i>first</i> item</li> <li>item 2</li> </ul></string>
+    <string name="sket1">NIP/NIK Orang Tua :</string>
+    <string name="sket2">NIP/NIK Orang Tua</string>
+    <string name="sket3">Nama Orang Tua/Wali :</string>
+    <string name="sket4">Nama Orang Tua/Wali</string>
+    <string name="sket5">Pekerjaan Orang Tua/Wali :</string>
+    <string name="sket6">Pekerjaan Orang Tua/Wali</string>
+    <string name="sket7">Keperluan Surat :</string>
+    <string name="sket8">Keperluan Surat</string>
+    <string name="sket9">UPLOAD FILE</string>
+    <string name="sket10">REGISTRASI</string>
+
+    <!--  Surat Sidang  -->
+    <string name="sidang1">Judul :</string>
+    <string name="sidang2">Judul</string>
+    <string name="sidang3">Pembimbing :</string>
+    <string name="sidang4">Pembimbing</string>
+    <string name="sidang5">Penguji 1 :</string>
+    <string name="sidang6">Penguji 1</string>
+    <string name="sidang7">Penguji 2 :</string>
+    <string name="sidang8">Penguji 2</string>
+    <string name="sidang9">NIDN Pembimbing :</string>
+    <string name="sidang10">NIDN Pembimbing</string>
+    <string name="sidang11">Nomor SK Bimbingan :</string>
+    <string name="sidang12">Nomor SK Bimbingan</string>
+    <string name="sidang13">Tanggal SK Bimbingan :</string>
+    <string name="sidang14">01–01–2021</string>
+    <string name="sidang15">Tanggal ACC Sidang :</string>
+    <string name="sidang16">Jumlah Bimbingan :</string>
+    <string name="sidang17">Jumlah Bimbingan (1–20)</string>
+
+    <!--  Cuti Akademik -->
+
+
     <!--  Halaman Akun  -->
     <string name="akun1">Setting</string>
     <!-- TODO: Remove or change this placeholder text -->

@@ -16,14 +16,16 @@ import android.widget.Toast;
 
 import com.dennyprastiawan.ebaak.MainActivity;
 import com.dennyprastiawan.ebaak.R;
+import com.dennyprastiawan.ebaak.desain.Cutiakademik;
 import com.dennyprastiawan.ebaak.desain.Daftar;
 import com.dennyprastiawan.ebaak.desain.Login;
+import com.dennyprastiawan.ebaak.desain.SuratSidang;
 import com.dennyprastiawan.ebaak.desain.Suratketerangan;
 
 import java.util.Objects;
 
 public class home extends Fragment {
-    private CardView mSuratKeterangan;
+    private CardView mSuratKeterangan,mSidang,mCuti;
     private ProgressDialog pDialog;
 
     @Override
@@ -39,6 +41,17 @@ public class home extends Fragment {
         }
         View myview = inflater.inflate(R.layout.fragment_home, container, false);
         init(myview);
+
+        /*Ini menu surat pendaftaran sidang*/
+        mSidang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SuratSidang.class);
+                startActivity(intent);
+            }
+        });
+
+        /* Ini menu surat Keterangan */
         mSuratKeterangan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,11 +59,27 @@ public class home extends Fragment {
                 startActivity(intent);
             }
         });
+
+        /* Ini menu surat cuti akademik */
+        mCuti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Cutiakademik.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
         return myview;
     }
 
     public void init(View view){
         mSuratKeterangan = view.findViewById(R.id.cardSuratKeterangan);
+        mSidang = view.findViewById(R.id.cdSidang);
+        mCuti = view.findViewById(R.id.cdCuti);
         pDialog = new ProgressDialog(getContext());
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading.....");
