@@ -16,16 +16,19 @@ import android.widget.Toast;
 
 import com.dennyprastiawan.ebaak.MainActivity;
 import com.dennyprastiawan.ebaak.R;
+import com.dennyprastiawan.ebaak.desain.Aktifakademik;
 import com.dennyprastiawan.ebaak.desain.Cutiakademik;
 import com.dennyprastiawan.ebaak.desain.Daftar;
+import com.dennyprastiawan.ebaak.desain.Kerjapraktek;
 import com.dennyprastiawan.ebaak.desain.Login;
+import com.dennyprastiawan.ebaak.desain.Penelitian;
 import com.dennyprastiawan.ebaak.desain.SuratSidang;
 import com.dennyprastiawan.ebaak.desain.Suratketerangan;
 
 import java.util.Objects;
 
 public class home extends Fragment {
-    private CardView mSuratKeterangan,mSidang,mCuti;
+    private CardView mSuratKeterangan,mSidang,mCuti,mAktif,mPenelitian,mKpraktek;
     private ProgressDialog pDialog;
 
     @Override
@@ -69,6 +72,32 @@ public class home extends Fragment {
             }
         });
 
+        /* Ini menu untuk surat aktif akademik */
+        mAktif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Aktifakademik.class);
+                startActivity(intent);
+            }
+        });
+
+        /* Ini menu untuk surat ijin penelitian */
+        mPenelitian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Penelitian.class);
+                startActivity(intent);
+            }
+        });
+
+        /* Ini menu untuk surat kerja praktek */
+        mKpraktek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Kerjapraktek.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -80,6 +109,9 @@ public class home extends Fragment {
         mSuratKeterangan = view.findViewById(R.id.cardSuratKeterangan);
         mSidang = view.findViewById(R.id.cdSidang);
         mCuti = view.findViewById(R.id.cdCuti);
+        mAktif = view.findViewById(R.id.cdAktif);
+        mPenelitian = view.findViewById(R.id.cdPenelitian);
+        mKpraktek = view.findViewById(R.id.cdKerjaPraktek);
         pDialog = new ProgressDialog(getContext());
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading.....");

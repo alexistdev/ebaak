@@ -81,10 +81,42 @@
     <string name="sidang17">Jumlah Bimbingan (1–20)</string>
 
     <!--  Cuti Akademik -->
+    <string name="cuti1">Tahun Akademik :</string>
+    <string name="cuti2">Tahun Akademik</string>
+    <string name="cuti3">Alasan Cuti :</string>
+    <string name="cuti4">Alasan Cuti</string>
 
+    <!--  Aktif Akademik -->
+    <string name="aktif1">Alasan Aktif :</string>
+    <string name="aktif2">Alasan Aktif</string>
+
+    <!--  Izin Penelitian -->
+    <string name="penelitian1">Ditujukan Kepada :</string>
+    <string name="penelitian2">Ditujukan Kepada</string>
+    <string name="penelitian3">Nama Instansi/Perusahaan :</string>
+    <string name="penelitian4">Nama Instansi/Perusahaan</string>
+    <string name="penelitian5">Alamat Instansi/Perusahaan :</string>
+    <string name="penelitian6">Alamat Instansi/Perusahaan</string>
+    <string name="penelitian7">Judul Penelitian :</string>
+    <string name="penelitian8">Judul Penelitian</string>
+    <string name="penelitian9">Tanggal Mulai Penelitian :</string>
+    <string name="penelitian10">01–01–2021</string>
+    <string name="penelitian11">Tanggal Akhir Penelitian :</string>
+
+    <!--  Izin Kerja Praktek -->
+    <string name="kp1">Nama Instansi :</string>
+    <string name="kp2">Nama Instansi</string>
+    <string name="kp3">Surat Ditujukan Kepada :</string>
+    <string name="kp4">Kepala/Direktur/Pimpinan/Rektor</string>
+    <string name="kp5">Alamat Instansi :</string>
+    <string name="kp6">Alamat Instansi</string>
+    <string name="kp7">Tanggal Mulai :</string>
+    <string name="kp8">01–01–2021</string>
+    <string name="kp9">Tanggal Berakhir :</string>
+    <string name="kp10">Keterangan :</string>
+    <string name="kp11">Keterangan</string>
 
     <!--  Halaman Akun  -->
     <string name="akun1">Setting</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

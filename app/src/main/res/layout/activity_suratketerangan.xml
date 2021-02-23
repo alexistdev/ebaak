@@ -97,14 +97,15 @@
         android:drawableEnd="@drawable/ic_file_putih"
         android:text="@string/sket9"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/maroon"
+        android:background="@color/tombolSurat"
         android:text="@string/sket10"
+        android:textColor="@color/white"
         android:layout_gravity="end"/>
 
 

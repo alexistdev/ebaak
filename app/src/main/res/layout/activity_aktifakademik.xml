@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".desain.Cutiakademik">
+    tools:context=".desain.Aktifakademik">
     <TextView
         android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cuti1"
+        android:text="@string/aktif1"
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
@@ -21,29 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:hint="@string/cuti2"
+        android:hint="@string/aktif2"
         android:drawableStart="@drawable/ic_note"
         android:drawablePadding="10dp"
-        android:autofillHints="@string/cuti2"/>
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cuti3"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
-    <EditText
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="@string/cuti4"
-        android:drawableStart="@drawable/ic_note"
-        android:drawablePadding="10dp"
-        android:autofillHints="@string/cuti4"/>
+        android:autofillHints="@string/aktif2"/>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="30dp"
         android:layout_marginStart="16dp"

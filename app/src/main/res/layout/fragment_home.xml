@@ -155,6 +155,7 @@
             </androidx.cardview.widget.CardView>
             <!--    Aktif Kembali  -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cdAktif"
                 app:cardCornerRadius="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16dp"
@@ -198,6 +199,7 @@
             </androidx.cardview.widget.CardView>
             <!--    Ijin Penelitian -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cdPenelitian"
                 app:cardCornerRadius="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16dp"
@@ -241,6 +243,7 @@
             </androidx.cardview.widget.CardView>
             <!--    Kerja Praktek -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cdKerjaPraktek"
                 app:cardCornerRadius="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16dp"
