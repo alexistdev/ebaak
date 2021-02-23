@@ -117,6 +117,31 @@
     <string name="kp11">Keterangan</string>
 
     <!--  Halaman Akun  -->
-    <string name="akun1">Setting</string>
+    <string name="akun1">Email</string>
+    <string name="akun2">NPM</string>
+    <string name="akun3">Nama Lengkap</string>
+    <string name="akun4">Password</string>
+    <string name="akun5">Ubah</string>
+
+    <!--  Halaman Pindah Kelas  -->
+    <string name="pindah1">Kelas Sebelumnya :</string>
+    <string name="pindah2">Kelas Sebelumnya</string>
+    <string name="pindah3">Alasan Pindah :</string>
+    <string name="pindah4">Alasan Pindah</string>
+    <string name="pindah5">Tanggal Pengajuan :</string>
+    <string name="pindah6">01–01–2021</string>
+
+    <!--  Halaman Pindah Prodi  -->
+    <string name="prodi1">Pindah Ke Program Studi :</string>
+    <string name="prodi2">Pindah Ke Program Studi</string>
+    <string name="prodi3">Alasan Pindah :</string>
+    <string name="prodi4">Alasan Pindah</string>
+
+    <!--  Halaman Tanda Lulus  -->
+    <string name="lulus1">Tempat Lahir :</string>
+    <string name="lulus2">Tempat Lahir</string>
+    <string name="lulus3">Tanggal Lahir :</string>
+    <string name="lulus4">01–01–2021</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
