@@ -121,7 +121,9 @@
     <string name="akun2">NPM</string>
     <string name="akun3">Nama Lengkap</string>
     <string name="akun4">Password</string>
-    <string name="akun5">Ubah</string>
+    <string name="akun5">Update</string>
+    <string name="akun6">Logout</string>
+    <string name="akun7">Jurusan</string>
 
     <!--  Halaman Pindah Kelas  -->
     <string name="pindah1">Kelas Sebelumnya :</string>

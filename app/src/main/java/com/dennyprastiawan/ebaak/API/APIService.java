@@ -3,6 +3,7 @@ package com.dennyprastiawan.ebaak.API;
 import android.content.Context;
 
 import com.dennyprastiawan.ebaak.config.Constants;
+import com.dennyprastiawan.ebaak.model.AkunModel;
 import com.dennyprastiawan.ebaak.model.LoginModel;
 import com.dennyprastiawan.ebaak.model.MahasiswaModel;
 import com.dennyprastiawan.ebaak.response.ResponseJurusan;
@@ -17,8 +18,20 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIService {
+    @FormUrlEncoded
+    @PUT("api/Auth/akun/{id_user}")
+    Call<AkunModel> updateAkun(@Path("id_user") String id_user,
+                                 @Field("email") String email,
+                                 @Field("nama") String nama,
+                                 @Field("password") String password);
+
+    @GET("api/Auth/akun/{id_user}")
+    Call<AkunModel> infoAkun(@Path("id_user") String id_user);
 
     @FormUrlEncoded
     @POST("api/Auth/login")

@@ -7,10 +7,6 @@
     android:background="@color/bgGrey"
     android:orientation="vertical"
     tools:context=".fragment.akun_fragment">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <androidx.cardview.widget.CardView
             android:id="@+id/layoutForm"
             android:layout_marginTop="30dp"
@@ -38,6 +34,14 @@
                     android:hint="@string/akun2"
                     android:autofillHints="@string/akun2"/>
                 <EditText
+                    android:id="@+id/txtJurusan"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/akun7"
+                    android:autofillHints="@string/akun7"/>
+                <EditText
                     android:id="@+id/txtEMail"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
@@ -53,7 +57,6 @@
                     android:inputType="text"
                     android:hint="@string/akun3"
                     android:autofillHints="@string/akun3"/>
-
                 <EditText
                     android:id="@+id/txtPassword"
                     android:layout_margin="10dp"
@@ -62,15 +65,28 @@
                     android:inputType="textPassword"
                     android:hint="@string/akun4"
                     android:autofillHints="@string/akun4"/>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnEdit"
+                <LinearLayout
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bgUtama"
-                    android:text="@string/akun5"
-                    android:textColor="@color/white"/>
+                    android:orientation="horizontal">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnEdit"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/bgUtama"
+                        android:text="@string/akun5"
+                        android:textColor="@color/white"/>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnLogout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/maroon"
+                        android:text="@string/akun6"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-    </RelativeLayout>
-
 </FrameLayout>
