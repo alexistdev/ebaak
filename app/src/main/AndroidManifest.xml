@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ebaak">
-        <activity android:name=".desain.Yudisium"></activity>
+        <activity android:name=".desain.Yudisium"
+            android:parentActivityName=".MainActivity"
+            />
         <activity
             android:name=".desain.Tandalulus"
             android:parentActivityName=".MainActivity" />

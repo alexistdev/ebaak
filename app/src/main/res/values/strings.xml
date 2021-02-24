@@ -60,6 +60,9 @@
     <string name="sket8">Keperluan Surat</string>
     <string name="sket9">UPLOAD FILE</string>
     <string name="sket10">REGISTRASI</string>
+    <string name="sket11">Alamat :</string>
+    <string name="sket12">Alamat</string>
+    <string name="sket13">Nama File (Rar/Zip)</string>
 
     <!--  Surat Sidang  -->
     <string name="sidang1">Judul :</string>

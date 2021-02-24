@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="@string/sket2"
-        android:drawableStart="@drawable/ic_note"
+        android:drawableStart="@drawable/ic_nik"
         android:drawablePadding="10dp"
         android:autofillHints="@string/sket2"/>
 
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="@string/sket4"
-        android:drawableStart="@drawable/ic_note"
+        android:drawableStart="@drawable/ic_person"
         android:drawablePadding="10dp"
         android:autofillHints="@string/sket4"/>
     <TextView
@@ -62,9 +62,29 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="@string/sket6"
-        android:drawableStart="@drawable/ic_note"
+        android:drawableStart="@drawable/ic_pekerjaan"
         android:drawablePadding="10dp"
         android:autofillHints="@string/sket6"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sket11"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+    <EditText
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/sket12"
+        android:drawableStart="@drawable/ic_alamat"
+        android:drawablePadding="10dp"
+        android:autofillHints="@string/sket12"/>
+
     <TextView
         android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
@@ -85,19 +105,34 @@
         android:drawablePadding="10dp"
         android:autofillHints="@string/sket8"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:id="@+id/buttonok"
-        app:backgroundTint="@color/maroon"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_file_putih"
-        android:text="@string/sket9"/>
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/btnUpload"
+            app:backgroundTint="@color/maroon"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_file_putih"
+            android:text="@string/sket9"/>
+        <TextView
+            android:id="@+id/NamaFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/sket13"/>
+    </LinearLayout>
+
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegistrasi"
         android:layout_marginTop="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
