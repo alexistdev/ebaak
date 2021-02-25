@@ -17,8 +17,10 @@ public class SuratKeteranganModel {
     private final String keperluan;
     @SerializedName("message")
     private final String message;
+    @SerializedName("upload")
+    private final String upload;
 
-    public SuratKeteranganModel(String id_user, String nik_ortu, String nama_ortu, String pekerjaan_ortu, String alamat, String keperluan, String message) {
+    public SuratKeteranganModel(String id_user, String nik_ortu, String nama_ortu, String pekerjaan_ortu, String alamat, String keperluan, String message, String upload) {
         this.id_user = id_user;
         this.nik_ortu = nik_ortu;
         this.nama_ortu = nama_ortu;
@@ -26,6 +28,7 @@ public class SuratKeteranganModel {
         this.alamat = alamat;
         this.keperluan = keperluan;
         this.message = message;
+        this.upload = upload;
     }
 
     public String getId_user() {
@@ -54,5 +57,9 @@ public class SuratKeteranganModel {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getUpload() {
+        return upload;
     }
 }

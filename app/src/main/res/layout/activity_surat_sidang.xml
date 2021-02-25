@@ -21,6 +21,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtJudul"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -41,6 +42,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtPembimbing"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -61,6 +63,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtPenguji1"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -81,6 +84,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtPenguji2"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -101,6 +105,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtNIDN"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -120,6 +125,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtNomorSK"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -139,6 +145,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtTanggalSK"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -158,6 +165,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtTanggalAcc"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -177,6 +185,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <EditText
+                android:id="@+id/txtJumlahBimbingan"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="match_parent"
@@ -188,7 +197,9 @@
                 android:autofillHints="@string/sidang17"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegistrasi"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="80dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_width="wrap_content"

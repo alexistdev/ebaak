@@ -17,6 +17,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/etNikOrtu"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
@@ -37,6 +38,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/etNamaOrtu"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
@@ -56,6 +58,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/etPekerjaan"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
@@ -75,6 +78,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/etAlamat"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
@@ -95,6 +99,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/etKeperluan"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
