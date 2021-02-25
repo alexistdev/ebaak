@@ -7,6 +7,7 @@ import com.dennyprastiawan.ebaak.config.Constants;
 import com.dennyprastiawan.ebaak.model.AkunModel;
 import com.dennyprastiawan.ebaak.model.LoginModel;
 import com.dennyprastiawan.ebaak.model.MahasiswaModel;
+import com.dennyprastiawan.ebaak.model.SuratCutiModel;
 import com.dennyprastiawan.ebaak.model.SuratKeteranganModel;
 import com.dennyprastiawan.ebaak.model.SuratSidangModel;
 import com.dennyprastiawan.ebaak.response.ResponseJurusan;
@@ -32,6 +33,14 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
+    /* API Untuk Surat Cuti Akademik*/
+    @FormUrlEncoded
+    @POST("api/Surat/cuti")
+    Call<SuratCutiModel> daftarCuti(@Field("id_user") String id_user,
+                                    @Field("tahun_akademik") String tahun_akademik,
+                                    @Field("alasan_cuti") String alasan_cuti);
+
+    /* API Untuk Surat Pendaftaran Sidang*/
     @FormUrlEncoded
     @POST("api/Surat/sidang")
     Call<SuratSidangModel> daftarSidang(@Field("id_user") String id_user,

@@ -69,7 +69,6 @@ public class Suratketerangan extends AppCompatActivity {
 
                 mRegistrasi.setOnClickListener(v -> {
                     try {
-
                                 String idUser = sharedPreferences.getString("idUser", "");
                                 String nik =  mNik.getText().toString();
                                 String nama =  mNama.getText().toString();
@@ -79,13 +78,13 @@ public class Suratketerangan extends AppCompatActivity {
                                 if(nik.length() == 0 || nama.length() == 0 || pekerjaan.length() == 0 || alamat.length() == 0 || keperluan.length() == 0 ){
                                     displayExceptionMessage("Silahkan lengkapi form terlebih dahulu");
                                 } else {
+                                    showDialog();
                                     RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), idUser);
                                     RequestBody nikk = RequestBody.create(MediaType.parse("multipart/form-data"), nik);
                                     RequestBody namak = RequestBody.create(MediaType.parse("multipart/form-data"), nama);
                                     RequestBody pekerjaank = RequestBody.create(MediaType.parse("multipart/form-data"), pekerjaan);
                                     RequestBody alamatx = RequestBody.create(MediaType.parse("multipart/form-data"), alamat);
                                     RequestBody keperluanx = RequestBody.create(MediaType.parse("multipart/form-data"), keperluan);
-
                                     // creates RequestBody instance from file
                                     //RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), URLFILE);
                                     RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-file"), files);
@@ -97,6 +96,7 @@ public class Suratketerangan extends AppCompatActivity {
                                         @EverythingIsNonNull
                                         @Override
                                         public void onResponse(Call<SuratKeteranganModel> call, Response<SuratKeteranganModel> response) {
+                                            hideDialog();
                                             if(response.isSuccessful()){
                                                 Intent intent = new Intent(Suratketerangan.this, MainActivity.class);
                                                 startActivity(intent);
@@ -111,6 +111,7 @@ public class Suratketerangan extends AppCompatActivity {
                                         @Override
                                         public void onFailure(Call<SuratKeteranganModel> call, Throwable t) {
                                             if(t instanceof NoConnectivityException) {
+                                                hideDialog();
                                                 displayExceptionMessage("Internet Offline!");
                                             }
                                         }
@@ -149,18 +150,18 @@ public class Suratketerangan extends AppCompatActivity {
     public void onProfilAction(MenuItem mi) {
         displayExceptionMessage("ini profil");
     }
-//
-//    private void showDialog(){
-//        if(!pDialog.isShowing()){
-//            pDialog.show();
-//        }
-//    }
-//
-//    private void hideDialog(){
-//        if(pDialog.isShowing()){
-//            pDialog.dismiss();
-//        }
-//    }
+
+    private void showDialog(){
+        if(!pDialog.isShowing()){
+            pDialog.show();
+        }
+    }
+
+    private void hideDialog(){
+        if(pDialog.isShowing()){
+            pDialog.dismiss();
+        }
+    }
 
     public void displayExceptionMessage(String msg)
     {
