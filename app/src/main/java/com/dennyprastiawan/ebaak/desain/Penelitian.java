@@ -93,8 +93,9 @@ public class Penelitian extends AppCompatActivity {
         String tanggalAkhir =  mTanggalAkhir.getText().toString();
 
         if(dituju.length() == 0 || namaInstansi.length() == 0 || alamatInstansi.length() == 0 || judulPenelitian.length() == 0 || tanggalMulai.length() == 0 || tanggalAkhir.length() == 0){
-            displayExceptionMessage("User tidak ditemukan , silahkan login ulang");
+            displayExceptionMessage("Silahkan lengkapi form !");
         } else{
+            showDialog();
             RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), idUser);
             RequestBody ditujukan = RequestBody.create(MediaType.parse("multipart/form-data"), dituju);
             RequestBody nama_instansi = RequestBody.create(MediaType.parse("multipart/form-data"), namaInstansi);
@@ -108,6 +109,7 @@ public class Penelitian extends AppCompatActivity {
                 call.enqueue(new Callback<SuratPenelitianModel>() {
                     @Override
                     public void onResponse(Call<SuratPenelitianModel> call, Response<SuratPenelitianModel> response) {
+                        hideDialog();
                         if(response.isSuccessful()){
                             Intent intent = new Intent(Penelitian.this, MainActivity.class);
                             startActivity(intent);
@@ -121,6 +123,7 @@ public class Penelitian extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<SuratPenelitianModel> call, Throwable t) {
+                        hideDialog();
                         if(t instanceof NoConnectivityException) {
                             //hideDialog();
                             displayExceptionMessage("Internet Offline!");
@@ -128,6 +131,7 @@ public class Penelitian extends AppCompatActivity {
                     }
                 });
             }catch (Exception e){
+                hideDialog();
                 e.printStackTrace();
                 displayExceptionMessage(e.getMessage());
             }
@@ -160,6 +164,18 @@ public class Penelitian extends AppCompatActivity {
 
     public void onProfilAction(MenuItem mi) {
         displayExceptionMessage("ini profil");
+    }
+
+    private void showDialog(){
+        if(!pDialog.isShowing()){
+            pDialog.show();
+        }
+    }
+
+    private void hideDialog(){
+        if(pDialog.isShowing()){
+            pDialog.dismiss();
+        }
     }
 
     public void displayExceptionMessage(String msg)

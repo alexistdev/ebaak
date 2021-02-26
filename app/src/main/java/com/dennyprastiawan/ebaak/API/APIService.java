@@ -8,6 +8,7 @@ import com.dennyprastiawan.ebaak.model.AkunModel;
 import com.dennyprastiawan.ebaak.model.LoginModel;
 import com.dennyprastiawan.ebaak.model.MahasiswaModel;
 import com.dennyprastiawan.ebaak.model.SuratCutiModel;
+import com.dennyprastiawan.ebaak.model.SuratKPModel;
 import com.dennyprastiawan.ebaak.model.SuratKeteranganModel;
 import com.dennyprastiawan.ebaak.model.SuratPenelitianModel;
 import com.dennyprastiawan.ebaak.model.SuratSidangModel;
@@ -33,6 +34,17 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+    /* API Untuk Surat Kerja Praktek*/
+    @Multipart
+    @POST("api/Surat/kerjapraktek")
+    Call<SuratKPModel> daftarKP(@Part("id_user") RequestBody id_user,
+                                @Part("nama_instansi") RequestBody nama_instansi,
+                                @Part("ditujukan") RequestBody ditujukan,
+                                @Part("alamat_instansi") RequestBody alamat_instansi,
+                                @Part("tanggal_mulai") RequestBody tanggal_mulai,
+                                @Part("tanggal_berakhir") RequestBody tanggal_berakhir,
+                                @Part("keterangan") RequestBody keterangan);
 
     /* API Untuk Surat Penelitian*/
     @Multipart
