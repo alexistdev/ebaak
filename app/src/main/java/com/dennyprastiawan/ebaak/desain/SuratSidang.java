@@ -124,7 +124,6 @@ public class SuratSidang extends AppCompatActivity {
         }
     }
 
-
     public void init(){
         mJudul = findViewById(R.id.txtJudul);
         mPembimbing = findViewById(R.id.txtPembimbing);
@@ -151,23 +150,9 @@ public class SuratSidang extends AppCompatActivity {
         displayExceptionMessage("ini profil");
     }
 
-    private void showDialog(){
-        if(!pDialog.isShowing()){
-            pDialog.show();
-        }
-    }
-
-    private void hideDialog(){
-        if(pDialog.isShowing()){
-            pDialog.dismiss();
-        }
-    }
-
     public void displayExceptionMessage(String msg)
     {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
-
-
 
 }

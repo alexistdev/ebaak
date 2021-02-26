@@ -33,6 +33,12 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
+    /* API Untuk Surat Aktif Akademik*/
+    @FormUrlEncoded
+    @POST("api/Surat/aktif")
+    Call<SuratCutiModel> daftarAktif(@Field("id_user") String id_user,
+                                     @Field("alasan_aktif") String alasan_aktif);
+
     /* API Untuk Surat Cuti Akademik*/
     @FormUrlEncoded
     @POST("api/Surat/cuti")

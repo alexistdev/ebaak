@@ -9,13 +9,15 @@ public class SuratCutiModel {
     private final String tahun_akademik;
     @SerializedName("alasan_cuti")
     private final String alasan_cuti;
+    @SerializedName("alasan_aktif")
+    private final String alasan_aktif;
 
 
-    public SuratCutiModel(String id_user, String tahun_akademik, String alasan_cuti) {
+    public SuratCutiModel(String id_user, String tahun_akademik, String alasan_cuti, String alasan_aktif) {
         this.id_user = id_user;
         this.tahun_akademik = tahun_akademik;
         this.alasan_cuti = alasan_cuti;
-
+        this.alasan_aktif = alasan_aktif;
     }
 
     public String getId_user() {
@@ -30,5 +32,7 @@ public class SuratCutiModel {
         return alasan_cuti;
     }
 
-
+    public String getAlasan_aktif() {
+        return alasan_aktif;
+    }
 }

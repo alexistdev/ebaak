@@ -16,6 +16,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/txtAlasan"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
@@ -26,6 +27,7 @@
         android:drawablePadding="10dp"
         android:autofillHints="@string/aktif2"/>
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegistrasi"
         android:layout_marginTop="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

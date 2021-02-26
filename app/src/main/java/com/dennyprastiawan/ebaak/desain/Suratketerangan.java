@@ -47,7 +47,7 @@ public class Suratketerangan extends AppCompatActivity {
         tampil_syarat();
         mUpload.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setType("file/*");
+            intent.setType("application/zip|application/x-rar-compressed");
             intent = Intent.createChooser(intent, "Pilih file");
             startActivityForResult(intent,PICKFILE_RESULT_CODE);
         });
@@ -62,7 +62,8 @@ public class Suratketerangan extends AppCompatActivity {
         if (requestCode == PICKFILE_RESULT_CODE) {
             if (resultCode == RESULT_OK) {
                 String URLFILE = data.getData().getPath();
-                File files = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), URLFILE);
+                //File files = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), URLFILE);
+                File files = new File(URLFILE);
                 namaFile.setText(URLFILE);
                 SharedPreferences sharedPreferences = this.getSharedPreferences(
                         Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
@@ -78,7 +79,7 @@ public class Suratketerangan extends AppCompatActivity {
                                 if(nik.length() == 0 || nama.length() == 0 || pekerjaan.length() == 0 || alamat.length() == 0 || keperluan.length() == 0 ){
                                     displayExceptionMessage("Silahkan lengkapi form terlebih dahulu");
                                 } else {
-                                    showDialog();
+                                    //showDialog();
                                     RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), idUser);
                                     RequestBody nikk = RequestBody.create(MediaType.parse("multipart/form-data"), nik);
                                     RequestBody namak = RequestBody.create(MediaType.parse("multipart/form-data"), nama);
@@ -89,14 +90,14 @@ public class Suratketerangan extends AppCompatActivity {
                                     //RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), URLFILE);
                                     RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-file"), files);
                                     // MultipartBody.Part is used to send also the actual filename
-                                    MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("lampiran", "testing", requestFile);
+                                    MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("lampiran", files.getName(), requestFile);
                                     // adds another part within the multipart request
-                                    Call<SuratKeteranganModel> call = APIService.Factory.create(getApplicationContext()).daftarSk(id,nikk,namak,pekerjaank,alamatx,keperluanx,fileToUpload);
+                                    Call<SuratKeteranganModel> call = APIService.Factory.create(Suratketerangan.this).daftarSk(id,nikk,namak,pekerjaank,alamatx,keperluanx,fileToUpload);
                                     call.enqueue(new Callback<SuratKeteranganModel>() {
                                         @EverythingIsNonNull
                                         @Override
                                         public void onResponse(Call<SuratKeteranganModel> call, Response<SuratKeteranganModel> response) {
-                                            hideDialog();
+                                            //hideDialog();
                                             if(response.isSuccessful()){
                                                 Intent intent = new Intent(Suratketerangan.this, MainActivity.class);
                                                 startActivity(intent);
@@ -111,13 +112,14 @@ public class Suratketerangan extends AppCompatActivity {
                                         @Override
                                         public void onFailure(Call<SuratKeteranganModel> call, Throwable t) {
                                             if(t instanceof NoConnectivityException) {
-                                                hideDialog();
+                                                //hideDialog();
                                                 displayExceptionMessage("Internet Offline!");
                                             }
                                         }
                                     });
                                 }
                     } catch (Exception e) {
+                        //hideDialog();
                         e.printStackTrace();
                         displayExceptionMessage(e.getMessage());
                     }
@@ -140,7 +142,7 @@ public class Suratketerangan extends AppCompatActivity {
         mkerja = findViewById(R.id.etPekerjaan);
         mAlamat = findViewById(R.id.etAlamat);
         mPerlu= findViewById(R.id.etKeperluan);
-        pDialog = new ProgressDialog(getApplicationContext());
+        pDialog = new ProgressDialog(Suratketerangan.this);
         namaFile = findViewById(R.id.NamaFile);
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading.....");
@@ -165,7 +167,7 @@ public class Suratketerangan extends AppCompatActivity {
 
     public void displayExceptionMessage(String msg)
     {
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(Suratketerangan.this, msg, Toast.LENGTH_LONG).show();
     }
 
     public void tampil_syarat()
