@@ -39,22 +39,20 @@ public class Aktifakademik extends AppCompatActivity {
         Aktifakademik.this.setTitle("Aktif Kembali");
         tampil_syarat();
         init();
-        mRegistrasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                simpan();
-            }
-        });
+        mRegistrasi.setOnClickListener(v -> simpan());
     }
 
     public void simpan(){
+        showDialog();
         SharedPreferences sharedPreferences = this.getSharedPreferences(
                 Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
         String idUser = sharedPreferences.getString("idUser", "");
         String alasan =  mAlasan.getText().toString();
         if(idUser.length() == 0) {
+            hideDialog();
             displayExceptionMessage("User tidak ditemukan , silahkan login ulang");
         } else if(alasan.length() == 0){
+            hideDialog();
             displayExceptionMessage("Semua kolom harus diisi!");
         } else {
             try{
@@ -64,6 +62,7 @@ public class Aktifakademik extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<SuratCutiModel> call, Response<SuratCutiModel> response) {
                         if(response.isSuccessful()){
+                            hideDialog();
                             Intent intent = new Intent(Aktifakademik.this, MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -75,11 +74,13 @@ public class Aktifakademik extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<SuratCutiModel> call, Throwable t) {
                         if(t instanceof NoConnectivityException) {
+                            hideDialog();
                             displayExceptionMessage("Internet Offline!");
                         }
                     }
                 });
             }catch (Exception e){
+                hideDialog();
                 e.printStackTrace();
                 displayExceptionMessage(e.getMessage());
             }
@@ -89,8 +90,7 @@ public class Aktifakademik extends AppCompatActivity {
     public void init(){
         mAlasan = findViewById(R.id.txtAlasan);
         mRegistrasi = findViewById(R.id.btnRegistrasi);
-
-        pDialog = new ProgressDialog(getApplicationContext());
+        pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading.....");
     }
@@ -103,6 +103,18 @@ public class Aktifakademik extends AppCompatActivity {
 
     public void onProfilAction(MenuItem mi) {
         displayExceptionMessage("ini profil");
+    }
+
+    private void showDialog(){
+        if(!pDialog.isShowing()){
+            pDialog.show();
+        }
+    }
+
+    private void hideDialog(){
+        if(pDialog.isShowing()){
+            pDialog.dismiss();
+        }
     }
 
     public void displayExceptionMessage(String msg)

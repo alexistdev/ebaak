@@ -9,6 +9,7 @@ import com.dennyprastiawan.ebaak.model.LoginModel;
 import com.dennyprastiawan.ebaak.model.MahasiswaModel;
 import com.dennyprastiawan.ebaak.model.SuratCutiModel;
 import com.dennyprastiawan.ebaak.model.SuratKeteranganModel;
+import com.dennyprastiawan.ebaak.model.SuratPenelitianModel;
 import com.dennyprastiawan.ebaak.model.SuratSidangModel;
 import com.dennyprastiawan.ebaak.response.ResponseJurusan;
 
@@ -32,6 +33,18 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+    /* API Untuk Surat Penelitian*/
+    @Multipart
+    @POST("api/Surat/penelitian")
+    Call<SuratPenelitianModel> daftarPenelitian(@Part("id_user") RequestBody id_user,
+                                                @Part("ditujukan") RequestBody ditujukan,
+                                                @Part("nama_instansi") RequestBody nama_instansi,
+                                                @Part("alamat_instansi") RequestBody alamat_instansi,
+                                                @Part("judul_penelitian") RequestBody judul_penelitian,
+                                                @Part("tanggal_mulai") RequestBody tanggal_mulai,
+                                                @Part("tanggal_akhir") RequestBody tanggal_akhir);
+
 
     /* API Untuk Surat Aktif Akademik*/
     @FormUrlEncoded
