@@ -3,14 +3,42 @@ package com.dennyprastiawan.ebaak.desain;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dennyprastiawan.ebaak.API.APIService;
+import com.dennyprastiawan.ebaak.API.NoConnectivityException;
+import com.dennyprastiawan.ebaak.MainActivity;
 import com.dennyprastiawan.ebaak.R;
+import com.dennyprastiawan.ebaak.config.Constants;
+import com.dennyprastiawan.ebaak.model.APIError;
+import com.dennyprastiawan.ebaak.model.SuratPindahKelasModel;
+import com.dennyprastiawan.ebaak.utils.ErrorUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Pindahkelas extends AppCompatActivity {
+    private ProgressDialog pDialog;
+    private EditText mKelas,mAlasan,mTanggal;
+    private Button mRegistrasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +46,91 @@ public class Pindahkelas extends AppCompatActivity {
         setContentView(R.layout.activity_pindahkelas);
         Pindahkelas.this.setTitle("Surat Pindah Kelas");
         tampil_syarat();
+        init();
+        mRegistrasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                simpan();
+            }
+        });
+        /* Menampilkan calendar picker */
+        final Calendar myCalendar1 = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener date = (view, year, month, dayOfMonth) -> {
+            myCalendar1.set(Calendar.YEAR, year);
+            myCalendar1.set(Calendar.MONTH, month);
+            myCalendar1.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            String myFormat = "dd-MM-yyyy"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ITALY);
+            mTanggal.setText(sdf.format(myCalendar1.getTime()));
+        };
+        mTanggal.setOnClickListener(v -> new DatePickerDialog(Pindahkelas.this, date, myCalendar1
+                .get(Calendar.YEAR), myCalendar1.get(Calendar.MONTH),
+                myCalendar1.get(Calendar.DAY_OF_MONTH)).show());
     }
+
+    private void simpan(){
+        SharedPreferences sharedPreferences = this.getSharedPreferences(
+                Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+        String idUser = sharedPreferences.getString("idUser", "");
+        String kelas =  mKelas.getText().toString();
+        String alasan =  mAlasan.getText().toString();
+        String tanggal =  mTanggal.getText().toString();
+        if(kelas.length() == 0 || alasan.length() == 0 || tanggal.length() == 0){
+            displayExceptionMessage("Silahkan lengkapi form !");
+        } else {
+            showDialog();
+            RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), idUser);
+            RequestBody xkelas = RequestBody.create(MediaType.parse("multipart/form-data"), kelas);
+            RequestBody xalasan = RequestBody.create(MediaType.parse("multipart/form-data"), alasan);
+            RequestBody xtanggal = RequestBody.create(MediaType.parse("multipart/form-data"), tanggal);
+            try{
+                Call<SuratPindahKelasModel> call = APIService.Factory.create(Pindahkelas.this).daftarPindahKelas(id,xkelas,xalasan,xtanggal);
+                call.enqueue(new Callback<SuratPindahKelasModel>() {
+                    @Override
+                    public void onResponse(Call<SuratPindahKelasModel> call, Response<SuratPindahKelasModel> response) {
+                        if(response.isSuccessful()){
+                            hideDialog();
+                            Intent intent = new Intent(Pindahkelas.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                            displayExceptionMessage("Berhasil disimpan");
+                        }else {
+                            hideDialog();
+                            APIError error = ErrorUtils.parseError(response);
+                            displayExceptionMessage(error.message());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SuratPindahKelasModel> call, Throwable t) {
+                        if(t instanceof NoConnectivityException) {
+                            hideDialog();
+                            displayExceptionMessage("Internet Offline!");
+                        }
+                    }
+                });
+            }catch (Exception e){
+                hideDialog();
+                e.printStackTrace();
+                displayExceptionMessage(e.getMessage());
+            }
+        }
+
+    }
+
+    public void init(){
+        mKelas= findViewById(R.id.txtKelasSebelum);
+        mAlasan = findViewById(R.id.txtAlasan);
+        mTanggal = findViewById(R.id.txtTanggal);
+        mRegistrasi = findViewById(R.id.btnRegistrasi);
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Loading.....");
+    }
+
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -27,6 +139,18 @@ public class Pindahkelas extends AppCompatActivity {
 
     public void onProfilAction(MenuItem mi) {
         displayExceptionMessage("ini profil");
+    }
+
+    private void showDialog(){
+        if(!pDialog.isShowing()){
+            pDialog.show();
+        }
+    }
+
+    private void hideDialog(){
+        if(pDialog.isShowing()){
+            pDialog.dismiss();
+        }
     }
 
     public void displayExceptionMessage(String msg)
