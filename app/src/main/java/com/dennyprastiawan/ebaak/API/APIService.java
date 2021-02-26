@@ -10,6 +10,7 @@ import com.dennyprastiawan.ebaak.model.MahasiswaModel;
 import com.dennyprastiawan.ebaak.model.SuratCutiModel;
 import com.dennyprastiawan.ebaak.model.SuratKPModel;
 import com.dennyprastiawan.ebaak.model.SuratKeteranganModel;
+import com.dennyprastiawan.ebaak.model.SuratLulusModel;
 import com.dennyprastiawan.ebaak.model.SuratPenelitianModel;
 import com.dennyprastiawan.ebaak.model.SuratPindahKelasModel;
 import com.dennyprastiawan.ebaak.model.SuratPindahProdiModel;
@@ -36,6 +37,13 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+    /* API Untuk Surat Tanda Lulus*/
+    @Multipart
+    @POST("api/Surat/tandalulus")
+    Call<SuratLulusModel> daftarLulus(@Part("id_user") RequestBody id_user,
+                                      @Part("tempat_lahir") RequestBody tempat_lahir,
+                                      @Part("tanggal_lahir") RequestBody tanggal_lahir);
 
     /* API Untuk Surat Pindah Prodi*/
     @Multipart

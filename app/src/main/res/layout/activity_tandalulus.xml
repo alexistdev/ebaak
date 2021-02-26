@@ -18,6 +18,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/txtTempatLahir"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
@@ -37,12 +38,13 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/txtAlasan"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:hint="@string/prodi4"
+        android:hint="@string/lulus4"
         android:drawableStart="@drawable/ic_calendar"
         android:drawablePadding="10dp"
         android:autofillHints="@string/lulus4"/>
@@ -59,6 +61,7 @@
         android:text="@string/sket9"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegistrasi"
         android:layout_marginTop="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

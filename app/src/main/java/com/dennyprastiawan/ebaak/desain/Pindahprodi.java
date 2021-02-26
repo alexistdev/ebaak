@@ -86,8 +86,8 @@ public class Pindahprodi extends AppCompatActivity {
                     @EverythingIsNonNull
                     @Override
                     public void onFailure(Call<SuratPindahProdiModel> call, Throwable t) {
+                        hideDialog();
                         if(t instanceof NoConnectivityException) {
-                            hideDialog();
                             displayExceptionMessage("Internet Offline!");
                         }
                     }
