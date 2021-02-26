@@ -16,6 +16,7 @@ import com.dennyprastiawan.ebaak.model.SuratPindahKelasModel;
 import com.dennyprastiawan.ebaak.model.SuratPindahProdiModel;
 import com.dennyprastiawan.ebaak.model.SuratSidangModel;
 import com.dennyprastiawan.ebaak.response.ResponseJurusan;
+import com.dennyprastiawan.ebaak.response.ResponseRiwayat;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +38,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+    @GET("api/Riwayat/tampil")
+    Call<ResponseRiwayat> tampilRiwayat(@Query("id_user") String id_user);
+
+
 
     /* API Untuk Surat Tanda Lulus*/
     @Multipart
