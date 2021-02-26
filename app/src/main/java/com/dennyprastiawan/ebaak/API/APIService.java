@@ -12,6 +12,7 @@ import com.dennyprastiawan.ebaak.model.SuratKPModel;
 import com.dennyprastiawan.ebaak.model.SuratKeteranganModel;
 import com.dennyprastiawan.ebaak.model.SuratPenelitianModel;
 import com.dennyprastiawan.ebaak.model.SuratPindahKelasModel;
+import com.dennyprastiawan.ebaak.model.SuratPindahProdiModel;
 import com.dennyprastiawan.ebaak.model.SuratSidangModel;
 import com.dennyprastiawan.ebaak.response.ResponseJurusan;
 
@@ -35,6 +36,13 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+    /* API Untuk Surat Pindah Prodi*/
+    @Multipart
+    @POST("api/Surat/pindahprodi")
+    Call<SuratPindahProdiModel> daftarPindahProdi(@Part("id_user") RequestBody id_user,
+                                                  @Part("nama_prodi") RequestBody nama_prodi,
+                                                  @Part("alasan_pindah") RequestBody alasan_pindah);
 
     /* API Untuk Surat Pindah Kelas*/
     @Multipart

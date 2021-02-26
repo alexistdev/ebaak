@@ -18,6 +18,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/txtProdi"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
@@ -37,6 +38,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <EditText
+        android:id="@+id/txtAlasan"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
@@ -60,6 +62,7 @@
         android:text="@string/sket9"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegistrasi"
         android:layout_marginTop="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
