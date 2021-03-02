@@ -1,8 +1,5 @@
 package com.dennyprastiawan.ebaak.desain;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +7,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import com.dennyprastiawan.ebaak.API.APIService;
 import com.dennyprastiawan.ebaak.API.NoConnectivityException;
 import com.dennyprastiawan.ebaak.MainActivity;
@@ -23,9 +20,6 @@ import com.dennyprastiawan.ebaak.config.Constants;
 import com.dennyprastiawan.ebaak.model.APIError;
 import com.dennyprastiawan.ebaak.model.SuratPindahProdiModel;
 import com.dennyprastiawan.ebaak.utils.ErrorUtils;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,7 +27,7 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class Pindahprodi extends AppCompatActivity {
     private ProgressDialog pDialog;
-    private EditText mProdi,mAlasan;
+    private EditText mProdi,mAlasan,mUpload;
     private Button mRegistrasi;
 
     @Override
@@ -43,12 +37,7 @@ public class Pindahprodi extends AppCompatActivity {
         Pindahprodi.this.setTitle("Surat Pindah Program Studi");
         tampil_syarat();
         init();
-        mRegistrasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                simpan();
-            }
-        });
+        mRegistrasi.setOnClickListener(v -> simpan());
     }
 
     private void simpan(){
@@ -57,15 +46,13 @@ public class Pindahprodi extends AppCompatActivity {
         String idUser = sharedPreferences.getString("idUser", "");
         String prodi =  mProdi.getText().toString();
         String alasan =  mAlasan.getText().toString();
+        String lampiran =  mUpload.getText().toString();
         if(prodi.length() == 0 || alasan.length() == 0){
             displayExceptionMessage("Silahkan lengkapi form !");
         } else {
             showDialog();
-            RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), idUser);
-            RequestBody xprodi = RequestBody.create(MediaType.parse("multipart/form-data"), prodi);
-            RequestBody xalasan = RequestBody.create(MediaType.parse("multipart/form-data"), alasan);
             try{
-                Call<SuratPindahProdiModel> call = APIService.Factory.create(Pindahprodi.this).daftarPindahProdi(id,xprodi,xalasan);
+                Call<SuratPindahProdiModel> call = APIService.Factory.create(Pindahprodi.this).daftarPindahProdi(idUser,prodi,alasan,lampiran);
                 call.enqueue(new Callback<SuratPindahProdiModel>() {
                     @EverythingIsNonNull
                     @Override
@@ -104,6 +91,7 @@ public class Pindahprodi extends AppCompatActivity {
         mProdi= findViewById(R.id.txtProdi);
         mAlasan= findViewById(R.id.txtAlasan);
         mRegistrasi = findViewById(R.id.btnRegistrasi);
+        mUpload = findViewById(R.id.etLinkUpload);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading.....");
@@ -148,7 +136,7 @@ public class Pindahprodi extends AppCompatActivity {
                 "2. Pengumpulan DNS & KRS Asli Pertama s.d Terakhir.",
                 "3. Surat Keterangan Bebas Perpustakaan.",
                 "4. Scan KTM.",
-                "5. File dijadikan satu dalam folder zip/rar."
+                "5. File dijadikan satu dalam folder zip/rar kemudian diupload ke google drive, dan sertakan linknya pada form."
         };
         alert.setItems(items, (dialogInterface, i) -> {});
         alert.setCancelable(false)

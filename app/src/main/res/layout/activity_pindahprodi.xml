@@ -49,17 +49,26 @@
         android:drawablePadding="10dp"
         android:autofillHints="@string/prodi4"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="20dp"
+    <TextView
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:id="@+id/buttonok"
-        app:backgroundTint="@color/maroon"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_file_putih"
-        android:text="@string/sket9"/>
+        android:text="@string/sket13"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/etLinkUpload"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/sket14"
+        android:drawableStart="@drawable/ic_note"
+        android:drawablePadding="10dp"
+        android:autofillHints="@string/sket14"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegistrasi"

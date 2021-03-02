@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.dennyprastiawan.ebaak.API.APIService;
 import com.dennyprastiawan.ebaak.API.NoConnectivityException;
 import com.dennyprastiawan.ebaak.MainActivity;
@@ -23,13 +22,9 @@ import com.dennyprastiawan.ebaak.config.Constants;
 import com.dennyprastiawan.ebaak.model.APIError;
 import com.dennyprastiawan.ebaak.model.SuratLulusModel;
 import com.dennyprastiawan.ebaak.utils.ErrorUtils;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +32,7 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class Tandalulus extends AppCompatActivity {
     private ProgressDialog pDialog;
-    private EditText mTempat,mTanggal;
+    private EditText mTempat,mTanggal,mUpload;
     private Button mRegistrasi;
 
     @Override
@@ -69,15 +64,13 @@ public class Tandalulus extends AppCompatActivity {
         String idUser = sharedPreferences.getString("idUser", "");
         String tempat =  mTempat.getText().toString();
         String tanggal =  mTanggal.getText().toString();
-        if(tempat.length() == 0 || tanggal.length() == 0){
+        String lampiran =  mUpload.getText().toString();
+        if(tempat.length() == 0 || tanggal.length() == 0 || lampiran.length() == 0){
             hideDialog();
             displayExceptionMessage("Silahkan lengkapi form !");
         } else {
             try{
-                RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), idUser);
-                RequestBody xtempat = RequestBody.create(MediaType.parse("multipart/form-data"), tempat);
-                RequestBody xtanggal = RequestBody.create(MediaType.parse("multipart/form-data"), tanggal);
-                Call<SuratLulusModel> call = APIService.Factory.create(Tandalulus.this).daftarLulus(id,xtempat,xtanggal);
+                Call<SuratLulusModel> call = APIService.Factory.create(Tandalulus.this).daftarLulus(idUser,tempat,tanggal,lampiran);
                 call.enqueue(new Callback<SuratLulusModel>() {
                     @EverythingIsNonNull
                     @Override
@@ -116,6 +109,7 @@ public class Tandalulus extends AppCompatActivity {
         mTempat= findViewById(R.id.txtTempatLahir);
         mTanggal= findViewById(R.id.txtAlasan);
         mRegistrasi = findViewById(R.id.btnRegistrasi);
+        mUpload = findViewById(R.id.etLinkUpload);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading.....");

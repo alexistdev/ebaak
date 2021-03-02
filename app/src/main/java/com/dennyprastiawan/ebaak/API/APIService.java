@@ -41,26 +41,29 @@ public interface APIService {
 
 
     /* API Untuk Surat Tanda Lulus*/
-    @Multipart
+    @FormUrlEncoded
     @POST("api/Surat/tandalulus")
-    Call<SuratLulusModel> daftarLulus(@Part("id_user") RequestBody id_user,
-                                      @Part("tempat_lahir") RequestBody tempat_lahir,
-                                      @Part("tanggal_lahir") RequestBody tanggal_lahir);
+    Call<SuratLulusModel> daftarLulus(@Field("id_user") String id_user,
+                                      @Field("tempat_lahir") String tempat_lahir,
+                                      @Field("tanggal_lahir") String tanggal_lahir,
+                                      @Field("lampiran") String lampiran);
 
     /* API Untuk Surat Pindah Prodi*/
-    @Multipart
+    @FormUrlEncoded
     @POST("api/Surat/pindahprodi")
-    Call<SuratPindahProdiModel> daftarPindahProdi(@Part("id_user") RequestBody id_user,
-                                                  @Part("nama_prodi") RequestBody nama_prodi,
-                                                  @Part("alasan_pindah") RequestBody alasan_pindah);
+    Call<SuratPindahProdiModel> daftarPindahProdi(@Field("id_user") String id_user,
+                                                  @Field("nama_prodi") String nama_prodi,
+                                                  @Field("alasan_pindah") String alasan_pindah,
+                                                  @Field("lampiran") String lampiran);
 
     /* API Untuk Surat Pindah Kelas*/
-    @Multipart
+    @FormUrlEncoded
     @POST("api/Surat/pindahkelas")
-    Call<SuratPindahKelasModel> daftarPindahKelas(@Part("id_user") RequestBody id_user,
-                                                  @Part("kelas_sebelum") RequestBody kelas_sebelum,
-                                                  @Part("alasan_pindah") RequestBody alasan_pindah,
-                                                  @Part("tanggal_pengajuan") RequestBody tanggal_pengajuan);
+    Call<SuratPindahKelasModel> daftarPindahKelas(@Field("id_user") String id_user,
+                                                  @Field("kelas_sebelum") String kelas_sebelum,
+                                                  @Field("alasan_pindah") String alasan_pindah,
+                                                  @Field("tanggal_pengajuan") String tanggal_pengajuan,
+                                                  @Field("lampiran") String lampiran);
 
     /* API Untuk Surat Kerja Praktek*/
     @FormUrlEncoded
