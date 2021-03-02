@@ -62,7 +62,8 @@
     <string name="sket10">REGISTRASI</string>
     <string name="sket11">Alamat :</string>
     <string name="sket12">Alamat</string>
-    <string name="sket13">Nama File (Rar/Zip)</string>
+    <string name="sket13">Link Google Drive(Rar/Zip)</string>
+    <string name="sket14">Link Google Drive</string>
 
     <!--  Surat Sidang  -->
     <string name="sidang1">Judul :</string>

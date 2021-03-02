@@ -1,8 +1,5 @@
 package com.dennyprastiawan.ebaak.desain;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,11 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import com.dennyprastiawan.ebaak.API.APIService;
 import com.dennyprastiawan.ebaak.API.NoConnectivityException;
 import com.dennyprastiawan.ebaak.MainActivity;
@@ -24,20 +21,17 @@ import com.dennyprastiawan.ebaak.config.Constants;
 import com.dennyprastiawan.ebaak.model.APIError;
 import com.dennyprastiawan.ebaak.model.SuratPenelitianModel;
 import com.dennyprastiawan.ebaak.utils.ErrorUtils;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.internal.EverythingIsNonNull;
 
 public class Penelitian extends AppCompatActivity {
     private ProgressDialog pDialog;
-    private EditText mDitujukan,mNamaInstansi,mAlamat,mJudul,mTanggalMulai,mTanggalAkhir;
+    private EditText mDitujukan,mNamaInstansi,mAlamat,mJudul,mTanggalMulai,mTanggalAkhir,mPenelitian;
     private Button mRegistrasi;
 
     @Override
@@ -47,12 +41,7 @@ public class Penelitian extends AppCompatActivity {
         Penelitian.this.setTitle("Surat Izin Penelitian");
         tampil_syarat();
         init();
-        mRegistrasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                simpan();
-            }
-        });
+        mRegistrasi.setOnClickListener(v -> simpan());
         /* Menampilkan calendar picker */
         final Calendar myCalendar1 = Calendar.getInstance();
         final Calendar myCalendar2 = Calendar.getInstance();
@@ -91,22 +80,16 @@ public class Penelitian extends AppCompatActivity {
         String judulPenelitian =  mJudul.getText().toString();
         String tanggalMulai =  mTanggalMulai.getText().toString();
         String tanggalAkhir =  mTanggalAkhir.getText().toString();
+        String lampiran = mPenelitian.getText().toString();
 
-        if(dituju.length() == 0 || namaInstansi.length() == 0 || alamatInstansi.length() == 0 || judulPenelitian.length() == 0 || tanggalMulai.length() == 0 || tanggalAkhir.length() == 0){
+        if(dituju.length() == 0 || namaInstansi.length() == 0 || alamatInstansi.length() == 0 || judulPenelitian.length() == 0 || tanggalMulai.length() == 0 || tanggalAkhir.length() == 0 || lampiran.length() == 0){
             displayExceptionMessage("Silahkan lengkapi form !");
         } else{
             showDialog();
-            RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), idUser);
-            RequestBody ditujukan = RequestBody.create(MediaType.parse("multipart/form-data"), dituju);
-            RequestBody nama_instansi = RequestBody.create(MediaType.parse("multipart/form-data"), namaInstansi);
-            RequestBody alamat_instansi = RequestBody.create(MediaType.parse("multipart/form-data"), alamatInstansi);
-            RequestBody judul_penelitian = RequestBody.create(MediaType.parse("multipart/form-data"), judulPenelitian);
-            RequestBody tanggal_mulai = RequestBody.create(MediaType.parse("multipart/form-data"), tanggalMulai);
-            RequestBody tanggal_akhir = RequestBody.create(MediaType.parse("multipart/form-data"), tanggalAkhir);
-
             try{
-                Call<SuratPenelitianModel> call = APIService.Factory.create(Penelitian.this).daftarPenelitian(id,ditujukan,nama_instansi,alamat_instansi,judul_penelitian,tanggal_mulai,tanggal_akhir);
+                Call<SuratPenelitianModel> call = APIService.Factory.create(Penelitian.this).daftarPenelitian(idUser,dituju,namaInstansi,alamatInstansi,judulPenelitian,tanggalMulai,tanggalAkhir,lampiran);
                 call.enqueue(new Callback<SuratPenelitianModel>() {
+                    @EverythingIsNonNull
                     @Override
                     public void onResponse(Call<SuratPenelitianModel> call, Response<SuratPenelitianModel> response) {
                         hideDialog();
@@ -120,16 +103,40 @@ public class Penelitian extends AppCompatActivity {
                             displayExceptionMessage(error.message());
                         }
                     }
-
+                    @EverythingIsNonNull
                     @Override
                     public void onFailure(Call<SuratPenelitianModel> call, Throwable t) {
                         hideDialog();
                         if(t instanceof NoConnectivityException) {
-                            //hideDialog();
                             displayExceptionMessage("Internet Offline!");
                         }
                     }
                 });
+//                Call<SuratPenelitianModel> call = APIService.Factory.create(Penelitian.this).daftarPenelitian(id,ditujukan,nama_instansi,alamat_instansi,judul_penelitian,tanggal_mulai,tanggal_akhir);
+//                call.enqueue(new Callback<SuratPenelitianModel>() {
+//                    @Override
+//                    public void onResponse(Call<SuratPenelitianModel> call, Response<SuratPenelitianModel> response) {
+//                        hideDialog();
+//                        if(response.isSuccessful()){
+//                            Intent intent = new Intent(Penelitian.this, MainActivity.class);
+//                            startActivity(intent);
+//                            finish();
+//                            displayExceptionMessage("Berhasil disimpan");
+//                        } else {
+//                            APIError error = ErrorUtils.parseError(response);
+//                            displayExceptionMessage(error.message());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<SuratPenelitianModel> call, Throwable t) {
+//                        hideDialog();
+//                        if(t instanceof NoConnectivityException) {
+//                            //hideDialog();
+//                            displayExceptionMessage("Internet Offline!");
+//                        }
+//                    }
+//                });
             }catch (Exception e){
                 hideDialog();
                 e.printStackTrace();
@@ -148,7 +155,7 @@ public class Penelitian extends AppCompatActivity {
         mJudul = findViewById(R.id.txtJudul);
         mTanggalMulai = findViewById(R.id.txtTanggalMulai);
         mTanggalAkhir = findViewById(R.id.txtTanggalAkhir);
-
+        mPenelitian = findViewById(R.id.etLinkUpload);
         mRegistrasi = findViewById(R.id.btnRegistrasi);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -193,7 +200,7 @@ public class Penelitian extends AppCompatActivity {
                 "2. Fotocopy KRS Semester Berjalan.",
                 "3. Fotocopy Slip Skripsi/TA.",
                 "4. Fotocopy Slip SKS Semester Berjalan.",
-                "5. File dijadikan satu dalam folder zip/rar."
+                "5. File dijadikan satu dalam folder zip/rar kemudian diupload ke google drive, dan sertakan linknya pada form!."
         };
         alert.setItems(items, (dialogInterface, i) -> {});
         alert.setCancelable(false)

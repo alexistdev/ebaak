@@ -1,7 +1,6 @@
 package com.dennyprastiawan.ebaak.API;
 
 import android.content.Context;
-
 import com.dennyprastiawan.ebaak.BuildConfig;
 import com.dennyprastiawan.ebaak.config.Constants;
 import com.dennyprastiawan.ebaak.model.AkunModel;
@@ -17,10 +16,7 @@ import com.dennyprastiawan.ebaak.model.SuratPindahProdiModel;
 import com.dennyprastiawan.ebaak.model.SuratSidangModel;
 import com.dennyprastiawan.ebaak.response.ResponseJurusan;
 import com.dennyprastiawan.ebaak.response.ResponseRiwayat;
-
 import java.util.concurrent.TimeUnit;
-
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -67,26 +63,28 @@ public interface APIService {
                                                   @Part("tanggal_pengajuan") RequestBody tanggal_pengajuan);
 
     /* API Untuk Surat Kerja Praktek*/
-    @Multipart
+    @FormUrlEncoded
     @POST("api/Surat/kerjapraktek")
-    Call<SuratKPModel> daftarKP(@Part("id_user") RequestBody id_user,
-                                @Part("nama_instansi") RequestBody nama_instansi,
-                                @Part("ditujukan") RequestBody ditujukan,
-                                @Part("alamat_instansi") RequestBody alamat_instansi,
-                                @Part("tanggal_mulai") RequestBody tanggal_mulai,
-                                @Part("tanggal_berakhir") RequestBody tanggal_berakhir,
-                                @Part("keterangan") RequestBody keterangan);
+    Call<SuratKPModel> daftarKP(@Field("id_user") String id_user,
+                                @Field("nama_instansi") String nama_instansi,
+                                @Field("ditujukan") String ditujukan,
+                                @Field("alamat_instansi") String alamat_instansi,
+                                @Field("tanggal_mulai") String tanggal_mulai,
+                                @Field("tanggal_berakhir") String tanggal_berakhir,
+                                @Field("keterangan") String keterangan,
+                                @Field("lampiran") String lampiran);
 
     /* API Untuk Surat Penelitian*/
-    @Multipart
+    @FormUrlEncoded
     @POST("api/Surat/penelitian")
-    Call<SuratPenelitianModel> daftarPenelitian(@Part("id_user") RequestBody id_user,
-                                                @Part("ditujukan") RequestBody ditujukan,
-                                                @Part("nama_instansi") RequestBody nama_instansi,
-                                                @Part("alamat_instansi") RequestBody alamat_instansi,
-                                                @Part("judul_penelitian") RequestBody judul_penelitian,
-                                                @Part("tanggal_mulai") RequestBody tanggal_mulai,
-                                                @Part("tanggal_akhir") RequestBody tanggal_akhir);
+    Call<SuratPenelitianModel> daftarPenelitian(@Field("id_user") String id_user,
+                                                @Field("ditujukan") String ditujukan,
+                                                @Field("nama_instansi") String nama_instansi,
+                                                @Field("alamat_instansi") String alamat_instansi,
+                                                @Field("judul_penelitian") String judul_penelitian,
+                                                @Field("tanggal_mulai") String tanggal_mulai,
+                                                @Field("tanggal_akhir") String tanggal_akhir,
+                                                @Field("lampiran") String lampiran);
 
 
     /* API Untuk Surat Aktif Akademik*/
@@ -116,15 +114,15 @@ public interface APIService {
                                         @Field("tanggal_acc") String tanggal_acc,
                                         @Field("jumlah_bimbingan") String jumlah_bimbingan);
 
-    @Multipart
+    @FormUrlEncoded
     @POST("api/Surat/keterangan")
-    Call<SuratKeteranganModel> daftarSk(@Part("id_user") RequestBody id_user,
-                                        @Part("nik_ortu") RequestBody nik_ortu,
-                                        @Part("nama_ortu") RequestBody nama_ortu,
-                                        @Part("pekerjaan_ortu") RequestBody pekerjaan_ortu,
-                                        @Part("alamat") RequestBody alamat,
-                                        @Part("keperluan") RequestBody keperluan,
-                                        @Part MultipartBody.Part lampiran);
+    Call<SuratKeteranganModel> daftarSk(@Field("id_user") String id_user,
+                                        @Field("nik_ortu") String nik_ortu,
+                                        @Field("nama_ortu") String nama_ortu,
+                                        @Field("pekerjaan_ortu") String pekerjaan_ortu,
+                                        @Field("alamat") String alamat,
+                                        @Field("keperluan") String keperluan,
+                                        @Field("lampiran")  String lampiran);
 
 
     @FormUrlEncoded

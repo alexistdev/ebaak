@@ -33,8 +33,8 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class akun_fragment extends Fragment {
     private ProgressDialog pDialog;
-    EditText mNpm,mEmail,mNamaLengkap,mJurusan,mPassword;
-    Button mEdit,mLogout;
+    private EditText mNpm,mEmail,mNamaLengkap,mJurusan,mPassword;
+    private Button mEdit,mLogout;
 
 
     @Override
