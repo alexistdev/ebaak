@@ -106,7 +106,7 @@ public class Pindahprodi extends AppCompatActivity {
     }
 
     public void onProfilAction(MenuItem mi) {
-        displayExceptionMessage("ini profil");
+        displayExceptionMessage("Selamat Datang!");
     }
 
     private void showDialog(){

@@ -122,7 +122,7 @@ public class Tandalulus extends AppCompatActivity {
     }
 
     public void onProfilAction(MenuItem mi) {
-        displayExceptionMessage("ini profil");
+        displayExceptionMessage("Selamat Datang!");
     }
 
     private void showDialog(){
