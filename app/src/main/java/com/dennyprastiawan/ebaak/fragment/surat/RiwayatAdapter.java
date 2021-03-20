@@ -1,15 +1,12 @@
 package com.dennyprastiawan.ebaak.fragment.surat;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.dennyprastiawan.ebaak.R;
 import com.dennyprastiawan.ebaak.model.RiwayatModel;
 
@@ -37,9 +34,13 @@ public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.MyRiwaya
     public void onBindViewHolder (@NonNull MyRiwayatHolder holder,final int position){
         holder.mTanggal.setText(mRiwayatList.get(position).getTanggal_surat());
         String status = mRiwayatList.get(position).getStatus_riwayat();
-        if(status.equals("2")){
+        if(status.equals("3")) {
             holder.mStatus.setText("PENDING");
             holder.mStatus.setTextColor(context.getResources().getColor(R.color.maroon));
+        } else if(status.equals("2")){
+            holder.mStatus.setText("DITOLAK");
+            holder.mStatus.setTextColor(context.getResources().getColor(R.color.maroon));
+            holder.mNamaRiwayat.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.reject, 0);
         } else {
             holder.mStatus.setText("SELESAI");
             holder.mStatus.setTextColor(context.getResources().getColor(R.color.tombolSurat));
